@@ -9,38 +9,30 @@ class User:
 
     def deposit(self, amount):
         self.balance += amount
-        return self.balance
+        return self
 
     def withdrawal(self, amount):
         self.balance -= amount
-        return self.balance
+        return self
 
     def makeTransfer(self, amount, recipient):
         self.balance -= amount
         recipient.balance += amount
-        print(f"{self.name}, Balance: {self.balance}\n {recipient.name}, Balance: {recipient.balance}")
+        print(f"{self.name}, Balance: ${self.balance}\n{recipient.name}, Balance: ${recipient.balance}")
+        return self
 
         
 joe = User('Joe', 'Joemail')
 shay = User('Shay', 'Shaymail')
 jose = User('Jose', 'Josemail')
 
-joe.deposit(500)
-joe.deposit(300)
-joe.deposit(150)
-joe.withdrawal(100)
+joe.deposit(500).deposit(300).deposit(150).withdrawal(100)
 joe.userBalance()
 
-shay.deposit(1000)
-shay.deposit(500)
-shay.withdrawal(300)
-shay.withdrawal(200)
+shay.deposit(1000).deposit(500).withdrawal(300).withdrawal(200)
 shay.userBalance()
 
-jose.deposit(5000)
-jose.withdrawal(1000)
-jose.withdrawal(500)
-jose.withdrawal(300)
+jose.deposit(5000).withdrawal(1000).withdrawal(500).withdrawal(300)
 jose.userBalance()
 
 joe.makeTransfer(100, jose)
